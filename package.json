@@ -1,0 +1,68 @@
+{
+  "name": "Soulworkerz",
+  "productName": "Soulworkerz Launcher",
+  "author": "ocidborlan",
+  "description": "Soulworkerz Game Updater",
+  "version": "0.0.176",
+  "fileAssociations": {
+    "description": "Electron Game Updater"
+  },
+  "license": "MIT",
+  "scripts": {
+    "compile": "electron-webpack",
+    "build": "npm run compile && electron-builder",
+    "dist": "npm run compile && electron-builder --publish always && node build/delete-old-releases.js"
+  },
+  "dependencies": {
+    "electron-dl": "^3.0.2",
+    "electron-updater": "^4.3.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-iframe": "^1.8.0",
+    "react-router-dom": "^5.2.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-react": "^7.12.10",
+    "@octokit/core": "^3.2.4",
+    "dotenv": "^8.2.0",
+    "electron": "11.1.1",
+    "electron-builder": "22.9.1",
+    "electron-webpack": "^2.8.2",
+    "electron-webpack-eslint": "^6.0.0",
+    "eslint-plugin-react": "^7.21.5",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "shelljs": "^0.8.4",
+    "webpack": "^4.44.2"
+  },
+  "build": {
+    "extraFiles": [
+      {
+        "from": "./build/egu-config.json",
+        "to": "./egu-config.json"
+      }
+    ],
+    "win": {
+      "target": "nsis-web",
+      "requestedExecutionLevel": "highestAvailable",
+      "icon": "build/icon.ico",
+      "publish": [
+        {
+          "provider": "github",
+          "repo": "soulworkerz",
+          "owner": "ocidborlan",
+          "private": false,
+          "releaseType": "release"
+        }
+      ]
+    },
+    "nsisWeb": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true
+    }
+  }
+}
