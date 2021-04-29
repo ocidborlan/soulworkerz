@@ -1,4 +1,4 @@
-# SoulWorker Updater
+# SoulWorkerZ Updater
 
 Website : https://soulworkerz.com
 
